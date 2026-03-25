@@ -45,3 +45,23 @@ In Progress
 | 003      | Brute Force      | Multiple login attempts         |
 | 004      | Reconnaissance   | Port scanning activity          |
 | 005      | Brute Force      | Failed login attempts (EventID 4625) |
+
+
+## Basic Incident Response
+
+### Incident: Failed Login Attempts (EventID 4625)
+
+**1. Identification:**
+Detected multiple failed login attempts in Splunk logs.
+
+**2. Containment:**
+Blocked suspicious IP address and monitored login activity.
+
+**3. Eradication:**
+Checked system for unauthorized access and removed any suspicious accounts.
+
+**4. Recovery:**
+Reset affected user passwords and restored normal login operations.
+
+**5. Lessons Learned:**
+Implemented account lockout policy and stronger password rules.
