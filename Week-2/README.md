@@ -28,6 +28,15 @@ In Progress
 
 
 ## Incident Classification
+## MITRE ATT&CK Mapping
+
+| Alert ID | Incident Type     | MITRE Technique | Description |
+|----------|------------------|----------------|------------|
+| 001      | Malware          | T1486          | Data Encrypted for Impact (Ransomware) |
+| 002      | Unauthorized Access | T1078       | Valid Accounts |
+| 003      | Brute Force      | T1110          | Brute Force Login Attempts |
+| 004      | Reconnaissance   | T1046          | Network Service Scanning |
+| 005      | Brute Force      | T1110          | Failed Login Attempts |
 
 | Alert ID | Incident Type     | Description                     |
 |----------|------------------|---------------------------------|
