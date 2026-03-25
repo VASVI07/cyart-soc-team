@@ -24,3 +24,4 @@ In Progress
 | 002      | Unauthorized Login     | High     | Admin access attempt |
 | 003      | Brute Force SSH        | Medium   | Multiple login attempts |
 | 004      | Port Scan              | Low      | Reconnaissance activity |
+| 005 | Failed Login (EventID 4625) | High | Possible brute force or unauthorized access |
