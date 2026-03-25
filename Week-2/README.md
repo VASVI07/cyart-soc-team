@@ -25,3 +25,14 @@ In Progress
 | 003      | Brute Force SSH        | Medium   | Multiple login attempts |
 | 004      | Port Scan              | Low      | Reconnaissance activity |
 | 005 | Failed Login (EventID 4625) | High | Possible brute force or unauthorized access |
+
+
+## Incident Classification
+
+| Alert ID | Incident Type     | Description                     |
+|----------|------------------|---------------------------------|
+| 001      | Malware          | Ransomware attack detected      |
+| 002      | Unauthorized Access | Suspicious admin login        |
+| 003      | Brute Force      | Multiple login attempts         |
+| 004      | Reconnaissance   | Port scanning activity          |
+| 005      | Brute Force      | Failed login attempts (EventID 4625) |
