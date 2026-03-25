@@ -1,7 +1,7 @@
 # Week 2 - SOC Fundamentals
 
 ## Name:
-Your Name
+Vatsala gupta
 
 ## Objective:
 This week focuses on learning:
