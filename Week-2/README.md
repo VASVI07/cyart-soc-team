@@ -102,3 +102,12 @@ Implemented account lockout policy and stronger password rules.
 - Event ID 4625 indicates failed login attempts
 - Multiple attempts suggest possible brute-force attack
 - Requires monitoring and possible IP blocking
+
+## CVSS-Based Alert Prioritization
+
+| Alert ID | Alert Name                    | CVSS Score | Priority | Reason |
+|----------|-------------------------------|------------|----------|--------|
+| 001      | Log4Shell Exploit Detected    | 9.8        | Critical | Public exploit and severe impact |
+| 002      | Unauthorized Admin Login      | 8.1        | High     | High risk of privilege misuse |
+| 003      | Brute Force SSH Attempts      | 5.9        | Medium   | Repeated access attempts detected |
+| 004      | Port Scan                     | 2.6        | Low      | Reconnaissance with limited impact |
