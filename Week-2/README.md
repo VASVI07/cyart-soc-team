@@ -132,3 +132,18 @@ Multiple failed login attempts detected in Splunk logs indicating possible brute
 - Monitored login attempts
 - Identified suspicious IP activity
 - Prepared for containment (IP blocking)
+
+## Escalation Email
+
+Subject: [Critical] Failed Login Attempts Detected – Immediate Attention Required
+
+Dear Tier 2 Team,
+
+Multiple failed login attempts (Event ID 4625) have been detected in Splunk logs from source IP 192.168.1.50. The pattern indicates a possible brute-force attack targeting user accounts. The activity has been ongoing and may lead to unauthorized access if not mitigated.
+
+Initial analysis has been completed, and the IP has been identified as suspicious. Further investigation and containment actions such as IP blocking and account lockout are recommended.
+
+Please prioritize this incident and proceed with deeper analysis.
+
+Regards,  
+SOC Analyst
