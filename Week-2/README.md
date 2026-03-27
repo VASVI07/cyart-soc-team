@@ -70,3 +70,23 @@ Implemented account lockout policy and stronger password rules.
 ![Splunk Screenshot](https://github.com/user-attachments/assets/f7dbfd3d-f16f-424e-9522-096a3a36bb24)
 
 
+## Practical Steps Performed
+
+1. Started Splunk in Ubuntu VM using:
+   sudo /opt/splunk/bin/splunk start
+
+2. Opened Splunk Web at:
+   http://localhost:8000
+
+3. Uploaded log file (log.csv) using "Add Data"
+
+4. Selected sourcetype as CSV
+
+5. Indexed data into "main" index
+
+6. Searched logs using:
+   index="main" "4625"
+
+7. Identified failed login attempts (Event ID 4625)
+
+8. Analyzed logs and created alert classification
