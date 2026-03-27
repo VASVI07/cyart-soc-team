@@ -147,3 +147,26 @@ Please prioritize this incident and proceed with deeper analysis.
 
 Regards,  
 SOC Analyst
+
+## Incident Response Report
+
+### Executive Summary
+A potential brute-force attack was detected based on multiple failed login attempts (Event ID 4625) in Splunk logs. The activity indicates repeated unauthorized access attempts.
+
+### Timeline
+- 10:00 AM – Multiple failed login attempts detected  
+- 10:05 AM – Alert generated in Splunk  
+- 10:10 AM – Investigation started  
+
+### Impact Analysis
+The attack could lead to unauthorized access if successful. It poses a risk to system security and user accounts.
+
+### Remediation Steps
+- Monitor login attempts  
+- Enable account lockout policy  
+- Block suspicious IP addresses  
+
+### Lessons Learned
+- Need stronger password policies  
+- Continuous monitoring is required  
+- Alerts should be configured for early detection
