@@ -188,3 +188,7 @@ The attack could lead to unauthorized access if successful. It poses a risk to s
 - [ ] Analyze suspicious links (VirusTotal)  
 - [ ] Identify affected users  
 - [ ] Report phishing email  
+
+## Post-Mortem Summary
+
+The incident revealed weaknesses in password security and monitoring. Multiple failed login attempts were not immediately blocked. Implementing account lockout policies and stronger password requirements can prevent such attacks. Improved alerting and faster response can reduce risk and enhance overall system security.
