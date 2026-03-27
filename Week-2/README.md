@@ -111,3 +111,24 @@ Implemented account lockout policy and stronger password rules.
 | 002      | Unauthorized Admin Login      | 8.1        | High     | High risk of privilege misuse |
 | 003      | Brute Force SSH Attempts      | 5.9        | Medium   | Repeated access attempts detected |
 | 004      | Port Scan                     | 2.6        | Low      | Reconnaissance with limited impact |
+
+## Incident Ticket
+
+**Title:** [High] Failed Login Attempts Detected (Event ID 4625)
+
+**Description:**
+Multiple failed login attempts detected in Splunk logs indicating possible brute-force attack.
+
+**Indicators of Compromise (IOCs):**
+- Event ID: 4625
+- Source IP: 192.168.1.50
+- Log Source: Windows Security Logs
+
+**Priority:** High  
+**Status:** Open  
+**Assigned To:** SOC Analyst  
+
+**Actions Taken:**
+- Monitored login attempts
+- Identified suspicious IP activity
+- Prepared for containment (IP blocking)
