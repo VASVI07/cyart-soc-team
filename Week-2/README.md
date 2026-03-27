@@ -65,3 +65,8 @@ Reset affected user passwords and restored normal login operations.
 
 **5. Lessons Learned:**
 Implemented account lockout policy and stronger password rules.
+## Splunk Log Analysis Proof
+
+![Splunk Screenshot](https://github.com/user-attachments/assets/f7dbfd3d-f16f-424e-9522-096a3a36bb24)
+
+<img width="2233" height="1333" alt="splunk-log-analysis png" src="https://github.com/user-attachments/assets/d375fdfa-b46b-4303-b05b-e9fb4574f21c" />
