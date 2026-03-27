@@ -90,3 +90,15 @@ Implemented account lockout policy and stronger password rules.
 7. Identified failed login attempts (Event ID 4625)
 
 8. Analyzed logs and created alert classification
+
+## Alert Triage Practice
+
+| Alert ID | Description              | Source IP      | Priority | Status |
+|----------|--------------------------|----------------|----------|--------|
+| 002      | Brute-force SSH          | 192.168.1.100  | Medium   | Open   |
+| 005      | Failed Login (Event 4625)| 192.168.1.50   | High     | Investigating |
+
+### Analysis:
+- Event ID 4625 indicates failed login attempts
+- Multiple attempts suggest possible brute-force attack
+- Requires monitoring and possible IP blocking
