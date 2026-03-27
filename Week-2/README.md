@@ -192,3 +192,50 @@ The attack could lead to unauthorized access if successful. It poses a risk to s
 ## Post-Mortem Summary
 
 The incident revealed weaknesses in password security and monitoring. Multiple failed login attempts were not immediately blocked. Implementing account lockout policies and stronger password requirements can prevent such attacks. Improved alerting and faster response can reduce risk and enhance overall system security.
+
+## Threat Intelligence Validation
+
+The source IP (192.168.1.50) associated with failed login attempts was checked using threat intelligence tools such as VirusTotal and AlienVault OTX. 
+
+No direct malicious reputation was found; however, repeated failed login attempts indicate suspicious behavior. The activity was treated as a potential brute-force attack and monitored closely.
+
+## Evidence Preservation
+
+| Item       | Description             | Collected By | Date       | Hash Value        |
+|------------|------------------------|--------------|------------|-------------------|
+| Log File   | Windows Security Logs  | SOC Analyst  | 2026-03-27 | SampleHash12345   |
+
+### Notes:
+- Evidence collected from Windows Event Viewer
+- Logs analyzed using Splunk SIEM
+- Data preserved for further investigation
+
+
+---
+
+## Capstone Project: Alert to Response Cycle
+
+### Attack Simulation
+A brute-force login attempt was simulated using multiple failed login attempts (Event ID 4625).
+
+### Detection
+The attack was detected in Splunk using the query:
+index="main" "4625"
+
+### Triage
+The alert was classified as Medium to High priority based on repeated failed login attempts.
+
+### Response
+- Monitored suspicious login activity  
+- Identified potential brute-force behavior  
+- Recommended IP blocking and account lockout  
+
+### Conclusion
+The incident was successfully detected and analyzed, demonstrating the SOC workflow from detection to response.
+
+
+---
+
+## Stakeholder Briefing
+
+A potential brute-force attack was detected through multiple failed login attempts. The activity was identified using Splunk SIEM and analyzed for suspicious patterns. Immediate actions were taken to monitor and control the threat. Preventive measures such as account lockout policies and stronger authentication are recommended to enhance security and prevent future attacks.
