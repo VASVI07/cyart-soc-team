@@ -180,3 +180,11 @@ The attack could lead to unauthorized access if successful. It poses a risk to s
 | 10:10 AM            | Identified Event ID 4625       |
 | 10:15 AM            | Analyzed attack pattern        |
 | 10:20 AM            | Documented findings            |
+
+## Phishing Investigation Checklist
+
+- [ ] Verify email headers  
+- [ ] Check sender reputation  
+- [ ] Analyze suspicious links (VirusTotal)  
+- [ ] Identify affected users  
+- [ ] Report phishing email  
