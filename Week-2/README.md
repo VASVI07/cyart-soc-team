@@ -1,4 +1,4 @@
-# Week 2 - SOC Fundamentals
+# Week 1 - SOC Fundamentals
 
 ## Name:
 Vatsala gupta
