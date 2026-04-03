@@ -121,6 +121,41 @@ This behavior deviates from the normal pattern and indicates a possible unauthor
 Threat intelligence is information about known cyber threats, such as malicious IP addresses, file hashes, or attacker techniques, used to detect and respond to attacks.
 Example: Checking if an IP address in logs is listed as malicious in tools like VirusTotal or AlienVault OTX.
 
+Threat Intelligence Flow
+
+<img width="675" height="264" alt="image" src="https://github.com/user-attachments/assets/f4727bad-46a3-4f98-8b26-9f44962d6527" />
+
+We will simulate checking an IP using VirusTotal
+
+Step A — Pick a Sample IP
+Use this:8.8.8.8
+(Google DNS — will show mostly clean, good for learning)
+
+
+Step B — Go to VirusTotal
+Open browser
+Go to:  https://www.virustotal.com
+
+Step C — Search IP
+Click Search tab
+Paste IP:8.8.8.8
+Press Enter
+
+Step D — Observe Results
+You will see:
+Detection ratio (like 0/90 or similar)
+Community score
+Details about IP
+
+Step E — Understand Output
+If 0 detections → Likely safe
+If many detections → Malicious
+This is called IP reputation check
+
+Threat Intelligence Finding
+The IP address 8.8.8.8 was analyzed using VirusTotal. The results showed no malicious detections, indicating that the IP is likely safe.
+This demonstrates how threat intelligence can be used to verify whether an IP address is associated with known threats.
+
 ## Incident Escalation
 Incident escalation is the process of passing a security alert or incident to a higher-level team when it requires deeper investigation or has higher severity.
 Example: A Tier 1 analyst escalates a confirmed unauthorized access incident to Tier 2 for further analysis.
