@@ -149,6 +149,99 @@ System has moderate noise, not catastrophic failure
 Log correlation is the process of connecting multiple logs from different sources to identify patterns or detect suspicious activity.
 Example: Multiple failed login attempts followed by a successful login and unusual outbound traffic from the same IP address.
 
+Why Log Correlation is Important
+
+Without correlation :
+Logs are scattered
+Root cause is hard to find
+Debugging is slow
+
+With correlation :
+Faster root cause analysis
+End-to-end visibility
+Better incident response
+
+Core Concept: Correlation ID
+ What is it?
+
+A Correlation ID (Trace ID) is a unique identifier attached to a request as it travels across systems.
+
+Example Flow
+User Request → API → Service → Database
+       │         │        │
+       └── Same Correlation ID ──▶
+Example Logs
+[API]        request_id=abc123 Received request /pay
+[Service]    request_id=abc123 Processing payment
+[Database]   request_id=abc123 INSERT transaction
+[Service]    request_id=abc123 ERROR payment failed
+
+Even though logs are from different systems, request_id = abc123 connects them
+
+Visual Representation
+Correlated Flow:
+
+<img width="680" height="135" alt="image" src="https://github.com/user-attachments/assets/2ac213ed-08ef-41ba-95b2-0ce4edb5d784" />
+
+Without Correlation
+API Log: ERROR
+DB Log: Timeout
+Service Log: Failed
+(No connection between them)
+
+Types of Log Correlation
+ID-based Correlation
+Using request_id / trace_id
+Most reliable method
+
+Time-based Correlation
+Match logs by timestamps
+10:01:02 API error
+10:01:03 DB timeout
+Less accurate (can mislead)
+
+Pattern-based Correlation
+Match keywords / patterns
+"payment failed" + "timeout"
+
+Distributed Tracing Correlation
+Tracks full request lifecycle across microservices
+Tools:
+Jaeger
+Zipkin
+OpenTelemetry
+
+Real-World Example (Step-by-Step)
+Scenario: Payment Failure 
+Logs from different systems:
+API Log
+[10:00:01] request_id=xyz789 POST /pay
+Service Log
+[10:00:02] request_id=xyz789 Processing payment
+DB Log
+[10:00:03] request_id=xyz789 ERROR: connection timeout
+Service Log
+[10:00:04] request_id=xyz789 Payment failed
+Correlation Result
+xyz789:
+API → Service → DB (timeout) → Failure
+Root cause: Database timeout
+
+
+Advanced Concept: Correlation + Observability
+Modern systems combine:
+
+Logs	What happened
+Metrics	How much / how often
+Traces	Where it happened
+
+Together = Full Observability
+
+ELK Stack Archtecture:
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8b42446e-9a2b-41d5-8476-2163d9268bb3" />
+
+
 Log Correlation flow:
 
 <img width="344" height="280" alt="image" src="https://github.com/user-attachments/assets/0d0ace1f-96df-4774-8963-ef62a83e6f3e" />
