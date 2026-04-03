@@ -36,6 +36,40 @@ Same IP
 Log Analysis Finding:
 Multiple failed login attempts (Event ID 4625) were observed from IP 192.168.1.10, followed by a successful login (Event ID 4624). This indicates a possible brute force attack.
 
+Log Correlation flow:
+
+<img width="344" height="280" alt="image" src="https://github.com/user-attachments/assets/0d0ace1f-96df-4774-8963-ef62a83e6f3e" />
+
+We’ll simulate 3 different logs and connect them:
+
+Step A — Create Correlated Log Table
+
+<img width="860" height="220" alt="image" src="https://github.com/user-attachments/assets/06b3c9e6-72ff-462e-95ba-79e546f87a00" />
+
+Step B — Correlate
+Now connect the dots:
+Same Source IP? → ✅ Yes
+Sequence:
+Failed logins → success → outbound traffic
+Timing close together? → ✅ Yes
+
+Step C — Identify Pattern
+This is NOT random anymore.
+This is a correlated attack pattern
+Meaning:
+Attacker tried passwords
+Got access
+Then communicated outside
+
+## Log Correlation Finding
+Logs from authentication and network sources were correlated using the same Source IP (192.168.1.100). Multiple failed login attempts (Event ID 4625) were followed by a successful login (4624) and outbound traffic to 8.8.8.8.
+This indicates a potential compromise where the attacker gained access and initiated external communication.
+
+
+
+
+
+
 ## Log Correlation
 Log correlation is the process of connecting multiple logs from different sources to identify patterns or detect suspicious activity.
 Example: Multiple failed login attempts followed by a successful login and unusual outbound traffic from the same IP address.
