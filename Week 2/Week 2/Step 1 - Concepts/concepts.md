@@ -1,3 +1,4 @@
+<img width="954" height="274" alt="image" src="https://github.com/user-attachments/assets/f531b6b1-19f7-431c-b2a6-ae779ab2aba1" />
 ## Log Analysis
 Log analysis is the process of reviewing system logs to understand what activities happened in a system. Logs record events like logins, file access, or network activity.
 Example: Checking login logs to identify multiple failed login attempts from the same IP address.
