@@ -160,6 +160,82 @@ This demonstrates how threat intelligence can be used to verify whether an IP ad
 Incident escalation is the process of passing a security alert or incident to a higher-level team when it requires deeper investigation or has higher severity.
 Example: A Tier 1 analyst escalates a confirmed unauthorized access incident to Tier 2 for further analysis.
 
+Incident Escalation Flow
+
+<img width="670" height="244" alt="image" src="https://github.com/user-attachments/assets/fb794d9f-b54c-4996-9ec2-23f58635ea7a" />
+
+We will simulate a real escalation case
+
+Step A — Define the Incident
+Use this scenario:
+Alert: Unauthorized access
+Time: 2025-08-18 13:00
+IP: 192.168.1.200
+Technique: T1078 (Valid Accounts)
+
+Step B — Think Like Tier 1 Analyst
+Ask:
+Is it suspicious? → ✅ Yes
+Is it confirmed? → ✅ Yes
+Can Tier 1 handle it? → ❌ No
+So → Escalate to Tier 2
+
+Incident Escalation Report
+A high-priority alert was detected involving unauthorized access to Server-Y on 2025-08-18 at 13:00. The activity originated from IP address 192.168.1.200 and is associated with MITRE ATT&CK technique T1078 (Valid Accounts).
+Initial analysis confirms suspicious login behavior. The affected system has been isolated to prevent further compromise.
+This incident is being escalated to Tier 2 for deeper investigation and response.
+
+
+
 ## Evidence Preservation
 Evidence preservation is the process of collecting and storing digital evidence in a secure and accurate way so it can be used for investigation or legal purposes.
 Example: Creating a memory dump from a compromised system and generating a hash value to ensure its integrity.
+
+Evidence Preservation Flow
+
+<img width="677" height="277" alt="image" src="https://github.com/user-attachments/assets/25193882-efd6-450f-9c2a-bfa6ffee5e4c" />
+
+We’ll simulate collecting evidence + hashing it
+
+Step A — Create a Sample Evidence File
+Open Notepad
+Write:
+This is a simulated memory dump from Server-Y.
+Suspicious activity detected.
+Save file as:
+memory_dump.txt
+
+Step B — Generate Hash (VERY IMPORTANT)
+Now we prove the file is not changed.
+If you are on Windows:
+Open Command Prompt
+Navigate to file location (example):
+cd Desktop
+Run:
+certutil -hashfile memory_dump.txt SHA256
+Output will look like:
+SHA256 hash of file:
+A1B2C3D4E5F6...
+This is your evidence fingerprint
+
+
+Step C — Understand Why Hash Matters
+If file changes → hash changes ❌
+Same hash → file is intact ✅
+This proves evidence integrity
+
+Step D — Document Evidence (VERY IMPORTANT)
+
+Evidence Collection Record
+
+| Item        | Description            | Collected By | Date       | Hash Value |
+|-------------|------------------------|--------------|------------|------------|
+| Memory Dump | Server-Y simulated dump | SOC Analyst  | 2025-08-18 | <PASTE HASH HERE> |
+
+The evidence was collected and hashed using SHA256 to ensure integrity. The hash value confirms that the file has not been altered.
+
+
+
+
+
+
