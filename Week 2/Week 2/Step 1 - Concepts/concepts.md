@@ -3,9 +3,37 @@
 Log analysis is the process of reviewing system logs to understand what activities happened in a system. Logs record events like logins, file access, or network activity.
 Example: Checking login logs to identify multiple failed login attempts from the same IP address.
 
+Types of Logs (with examples)
+1. Application Logs
+2026-04-03 10:15:22 ERROR Payment failed for user_id=4821
+Used for debugging app issues.
+
+2. System Logs
+Apr 3 10:16:01 server1 CRON[1234]: Job started
+Tracks OS-level events.
+
+3. Access Logs (Web Servers)
+192.168.1.10 - - [03/Apr/2026:10:17:45] "GET /index.html HTTP/1.1" 200
+Shows who accessed what.
+
+4. Security Logs
+Failed login attempt from IP 45.23.12.9
+Critical for intrusion detection 🚨
+
 Log Analysis Flow
 
 ![Screenshot 2026-04-03 114103](https://github.com/user-attachments/assets/aef819be-69b9-4608-b2d0-51ef6d144a07)
+
+Parsing & Structuring
+
+Raw logs → structured format (JSON)
+Before:
+User 123 logged in from 192.168.1.1
+
+After:
+
+<img width="627" height="146" alt="image" src="https://github.com/user-attachments/assets/46fcc9cd-2aa4-4aff-86ef-1449c610e9c2" />
+
 
 Create Sample Log Data
 | Timestamp        | Event ID | Source IP    | Status        |
@@ -21,9 +49,9 @@ Create Sample Log Data
 Analyze the Log
 Now think like a SOC analyst:
 Ask:
-Same IP? → ✅ Yes (192.168.1.10)
-Multiple failed attempts? → ✅ Yes (3 times)
-Then success? → ✅ Yes
+Same IP? → Yes (192.168.1.10)
+Multiple failed attempts? →  Yes (3 times)
+Then success? →  Yes
 
 Identify Suspicious Pattern
 Conclusion:
@@ -35,6 +63,86 @@ Same IP
 
 Log Analysis Finding:
 Multiple failed login attempts (Event ID 4625) were observed from IP 192.168.1.10, followed by a successful login (Event ID 4624). This indicates a possible brute force attack.
+
+Visualization
+Here’s a simple example of log trends over time:
+<img width="623" height="188" alt="image" src="https://github.com/user-attachments/assets/7551e967-c9ce-4f3c-aaf4-07231689aed4" />
+
+Helps identify spikes in errors.
+
+Popular Log Analysis Tools
+
+| Tool      | Use Case                 |
+| --------- | ------------------------ |
+| ELK Stack | Open-source analytics    |
+| Splunk    | Enterprise monitoring    |
+| Grafana   | Visualization dashboards |
+| Datadog   | Cloud monitoring         |
+
+Real dashboards (with actual charts)
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/315db7f4-541d-4a82-a40b-316a9538c6fe" />
+
+Errors Over Time
+
+This is your health signal
+Spikes = something broke
+Flat low values = stable system
+
+In the chart:
+Errors fluctuate between 0–6
+A few spikes → possible intermittent issues
+
+What to do in real life:
+Zoom into spike timestamps
+Correlate with deployments / config changes
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/6c32ebcb-09d2-4422-a6c4-8667f69dad4e" />
+
+Traffic (Requests per Minute)
+
+This shows system load
+Higher traffic = more users or bots
+Sudden jumps = viral event or attack
+
+In the chart:
+Traffic is fairly stable (~40–70 req/min)
+No extreme spikes → normal usage pattern
+
+Real insight:
+If traffic ↑ and errors ↑ → system overload
+If traffic normal but errors ↑ → bug
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/1c572ae9-380c-444b-a7e5-c7b830b7c968" />
+
+Response Time (Latency)
+
+This is performance quality
+Low = fast system 
+High = slow / bottleneck 
+
+In the chart:
+Most values ~150–250 ms
+Some spikes >300 ms 
+
+Interpretation:
+Those spikes = slow database / API calls
+If consistent → scaling issue
+
+<img width="630" height="470" alt="image" src="https://github.com/user-attachments/assets/580922de-2839-4c4a-8abf-5cb87f26e221" />
+
+Error Distribution
+
+This shows how often errors occur
+Helps detect patterns (rare vs frequent)
+
+In the chart:
+Most logs have 1–3 errors
+Few extreme cases (5–6)
+
+Meaning:
+System has moderate noise, not catastrophic failure
+
 
 
 ## Log Correlation
@@ -53,10 +161,10 @@ Step A — Create Correlated Log Table
 
 Step B — Correlate
 Now connect the dots:
-Same Source IP? → ✅ Yes
+Same Source IP? → Yes
 Sequence:
 Failed logins → success → outbound traffic
-Timing close together? → ✅ Yes
+Timing close together? → Yes
 
 Step C — Identify Pattern
 This is NOT random anymore.
@@ -98,15 +206,15 @@ This is your baseline (normal behavior)
 
 Step C — Detect Anomaly
 Now look at last row:
-Time → ❌ 3 AM (unusual)
-Location → ❌ Russia (different country)
+Time →  3 AM (unusual)
+Location →  Russia (different country)
 This is not normal
 
-Step D — Analyst Thinking 🧠
+Step D — Analyst Thinking
 Ask:
-Same user? → ✅ Yes
-Different pattern? → ✅ Yes
-Risk? → ✅ High
+Same user? →  Yes
+Different pattern? →  Yes
+Risk? →  High
 Possible:
 Account compromise
 Unauthorized access
@@ -175,9 +283,9 @@ Technique: T1078 (Valid Accounts)
 
 Step B — Think Like Tier 1 Analyst
 Ask:
-Is it suspicious? → ✅ Yes
-Is it confirmed? → ✅ Yes
-Can Tier 1 handle it? → ❌ No
+Is it suspicious? → Yes
+Is it confirmed? → Yes
+Can Tier 1 handle it? → No
 So → Escalate to Tier 2
 
 Incident Escalation Report
@@ -220,8 +328,8 @@ This is your evidence fingerprint
 
 
 Step C — Understand Why Hash Matters
-If file changes → hash changes ❌
-Same hash → file is intact ✅
+If file changes → hash changes -No
+Same hash → file is intact -Yes
 This proves evidence integrity
 
 Step D — Document Evidence (VERY IMPORTANT)
