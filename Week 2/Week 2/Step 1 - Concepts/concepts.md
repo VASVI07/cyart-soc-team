@@ -74,6 +74,49 @@ This indicates a potential compromise where the attacker gained access and initi
 Anomaly detection is the process of identifying unusual patterns or activities that do not match normal behavior in a system.
 Example: A user logging in at 3 AM from a different country when they usually log in during office hours.
 
+Anomaly Detection flow:
+
+<img width="258" height="267" alt="image" src="https://github.com/user-attachments/assets/574940bd-b541-4476-82f1-0d33e3051ce1" />
+
+We’ll simulate normal vs abnormal behavior:
+
+Step A — Create Log Data
+
+| Timestamp        | User  | Location | Login Time | Status       |
+| ---------------- | ----- | -------- | ---------- | ------------ |
+| 2025-08-18 09:00 | vasvi | India    | 09:00 AM   | Normal Login |
+| 2025-08-19 09:15 | vasvi | India    | 09:15 AM   | Normal Login |
+| 2025-08-20 03:00 | vasvi | Russia   | 03:00 AM   | Suspicious   |
+
+
+Step B — Identify Normal Behavior
+
+From first two rows:
+Login time → morning (9 AM)
+Location → India
+This is your baseline (normal behavior)
+
+Step C — Detect Anomaly
+Now look at last row:
+Time → ❌ 3 AM (unusual)
+Location → ❌ Russia (different country)
+This is not normal
+
+Step D — Analyst Thinking 🧠
+Ask:
+Same user? → ✅ Yes
+Different pattern? → ✅ Yes
+Risk? → ✅ High
+Possible:
+Account compromise
+Unauthorized access
+
+Anomaly Detection Finding
+User "vasvi" typically logs in from India during morning hours (around 9 AM). However, a login was detected at 3:00 AM from Russia.
+This behavior deviates from the normal pattern and indicates a possible unauthorized access or account compromise.
+
+
+
 ## Threat Intelligence
 Threat intelligence is information about known cyber threats, such as malicious IP addresses, file hashes, or attacker techniques, used to detect and respond to attacks.
 Example: Checking if an IP address in logs is listed as malicious in tools like VirusTotal or AlienVault OTX.
